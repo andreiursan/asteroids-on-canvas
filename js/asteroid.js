@@ -4,6 +4,7 @@ function Asteroid(){
   this.heading = Math.random() * 360;
   this.angle = 0;
   this.speed = 50;
+  rotate(this, "angle", 10);
   drift(this, this.heading, this.speed);
 
   this.paint = function(context){
