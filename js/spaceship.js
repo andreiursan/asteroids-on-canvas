@@ -6,8 +6,6 @@ function Spaceship(){
   drift(this, this.heading, this.speed);
 
   this.paint = function(context){
-    context.fillStyle = "rgb(0,0,0)";
-    context.fillRect(0, 0, canvas.width, canvas.height);
     context.strokeStyle = "rgb(255, 255, 255)";
     context.fillStyle = "rgb(255,0,0)";
     context.beginPath();
