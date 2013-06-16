@@ -7,18 +7,11 @@ function Asteroid(){
   drift(this, this.heading, this.speed);
 
   this.paint = function(context){
-    context.strokeStyle = "rgb(255, 255, 255)";
-    context.fillStyle = "rgb(255,0,0)";
-    context.beginPath();
     context.translate(this.x, this.y);
     context.rotate(this.angle * Math.PI / 180.0);
-    context.moveTo(-8, 10);
-    context.lineTo(0, -9)
-    context.lineTo(8, 10);
-    context.closePath();
-    context.lineWidth = 2;
-    context.fill();
-    context.stroke(); 
+    var width = asteroidSprite.width;
+    var height = asteroidSprite.height;
+    context.drawImage(asteroidSprite, -width/2, -height/2, width, height);
   }
 }
 

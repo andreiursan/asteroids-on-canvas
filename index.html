@@ -6,7 +6,7 @@
   <script src="js/spaceship.js"></script>
   <script src="js/asteroid.js"></script>
   <script>
-    var canvas, spaceship, asteroid;
+    var canvas, spaceship, asteroid, asteroidSprite;
 
     function update(){
       var context = canvas.getContext('2d');
@@ -29,6 +29,7 @@
       canvas = document.getElementById("asteroids-game");
       spaceship = new Spaceship();
       asteroid = new Asteroid();
+      asteroidSprite = document.getElementById("asteroid-sprite");
       repaintLoop();
     }
 
@@ -56,6 +57,7 @@
     window.onkeydown = keyDown;
   </script>
   <body>
+    <img src="img/asteroid.png" id="asteroid-sprite" style="display: none"/>
     <canvas id="asteroids-game" width="800" height="600">
       Sorry, your browser does not support the canvas element. 
       Upgrade to a modern browser
