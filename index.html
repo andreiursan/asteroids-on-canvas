@@ -22,13 +22,26 @@
     function init(){
       canvas = document.getElementById("asteroids-game");
       spaceship = new Spaceship();
-      spaceship.heading = 60;
       drift(spaceship, spaceship.heading, 100);
       repaintLoop();
     }
 
-    window.onload = init;
+    function keyDown(event){
+      switch (event.keyCode){
+        case 37: // LEFT
+          spaceship.turnLeft();
+          break;
+        case 39: // RIRGHT
+          spaceship.turnRight();
+          break;
+        default:
+        // nothing
+      }
+      return false;
+    }
 
+    window.onload = init;
+    window.onkeydown = keyDown;
   </script>
   <body>
     <canvas id="asteroids-game" width="800" height="600">

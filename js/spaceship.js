@@ -2,6 +2,7 @@ function Spaceship(){
   this.x = canvas.width / 2;
   this.y = canvas.height / 2;
   this.heading = 30;
+  drift(this, this.heading, 100);
 
   this.paint = function(context){
     context.fillStyle = "rgb(0,0,0)";
@@ -19,6 +20,15 @@ function Spaceship(){
     context.fill();
     context.stroke(); 
   }
-}
 
+  this.turnLeft = function() {
+    drift(this, this.heading, 100);
+    this.heading -= 10;
+  }
+
+  this.turnRight = function() {
+    drift(this, this.heading, 100);
+    this.heading += 10;
+  }
+}
 
