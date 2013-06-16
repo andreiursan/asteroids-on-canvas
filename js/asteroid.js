@@ -3,7 +3,7 @@ function Asteroid(){
   this.y = Math.random() * canvas.height;
   this.heading = Math.random() * 360;
   this.angle = 0;
-  this.speed = 50;
+  this.speed = Math.random() * 50;
   rotate(this, "angle", 10);
   drift(this, this.heading, this.speed);
 

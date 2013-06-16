@@ -6,7 +6,10 @@
   <script src="js/spaceship.js"></script>
   <script src="js/asteroid.js"></script>
   <script>
-    var canvas, spaceship, asteroid, asteroidSprite;
+    var canvas; 
+    var spaceship; 
+    var asteroids = []; 
+    var asteroidSprite;
 
     function update(){
       var context = canvas.getContext('2d');
@@ -15,9 +18,11 @@
       context.save();
       spaceship.paint(context);
       context.restore();
-      context.save();
-      asteroid.paint(context);
-      context.restore();
+      for (var i = 0; i < asteroids.length; i++) {
+        context.save();
+        asteroids[i].paint(context);
+        context.restore();
+      }
     }
 
     function repaintLoop(){
@@ -27,9 +32,11 @@
 
     function init(){
       canvas = document.getElementById("asteroids-game");
-      spaceship = new Spaceship();
-      asteroid = new Asteroid();
       asteroidSprite = document.getElementById("asteroid-sprite");
+      spaceship = new Spaceship();
+      for(var i = 0; i < 10; i++){
+        asteroids[i] = new Asteroid();
+      }
       repaintLoop();
     }
 
@@ -44,11 +51,11 @@
         case 39: // RIRGHT
           spaceship.turnRight();
           break;
-        case 40: // LEFT
+        case 40: // DOWN
           spaceship.slowDown();
           break;
         default:
-        // nothing
+          // nothing
       }
       return false;
     }
