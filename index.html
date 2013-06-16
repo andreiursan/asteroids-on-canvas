@@ -2,15 +2,33 @@
 <html>
   <title>Dynamic Asteroids</title>
   <meta http-equiv="content-type" content="text/html; charset=utf-8">
+  <script src="js/lib/animatic.js"></script>
+  <script src="js/spaceship.js"></script>
   <script>
-    function init(){
-      var canvas = document.getElementById("asteroids-game");
+    var canvas, spaceship;
+
+    function update(){
       var context = canvas.getContext('2d');
-      context.fillStyle = "rgb(0,0,0)";
-      context.fillRect(0, 0, canvas.width, canvas.height);
+      context.save();
+      spaceship.paint(context);
+      context.restore();
+    }
+
+    function repaintLoop(){
+      update();
+      setTimeout("repaintLoop()", 30);
+    }
+
+    function init(){
+      canvas = document.getElementById("asteroids-game");
+      spaceship = new Spaceship();
+      spaceship.heading = 60;
+      drift(spaceship, spaceship.heading, 100);
+      repaintLoop();
     }
 
     window.onload = init;
+
   </script>
   <body>
     <canvas id="asteroids-game" width="800" height="600">
