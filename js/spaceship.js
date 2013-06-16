@@ -2,7 +2,8 @@ function Spaceship(){
   this.x = canvas.width / 2;
   this.y = canvas.height / 2;
   this.heading = 30;
-  drift(this, this.heading, 100);
+  this.speed = 0;
+  drift(this, this.heading, this.speed);
 
   this.paint = function(context){
     context.fillStyle = "rgb(0,0,0)";
@@ -22,13 +23,31 @@ function Spaceship(){
   }
 
   this.turnLeft = function() {
-    drift(this, this.heading, 100);
+    drift(this, this.heading, this.speed);
     this.heading -= 10;
   }
 
   this.turnRight = function() {
-    drift(this, this.heading, 100);
+    drift(this, this.heading, this.speed);
     this.heading += 10;
+  }
+
+  this.speedUp = function() {
+    if (this.speed > 400) {
+      return;
+    }
+    this.speed += 50;
+    drift(this, this.heading, this.speed);
+  }
+
+  this.slowDown = function() {
+    if (this.speed <= 0) {
+      this.speed = 0;
+      drift(this, this.heading, this.speed);
+      return;
+    }
+    this.speed -= 50;
+    drift(this, this.heading, this.speed);
   }
 }
 

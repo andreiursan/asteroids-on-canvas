@@ -22,7 +22,6 @@
     function init(){
       canvas = document.getElementById("asteroids-game");
       spaceship = new Spaceship();
-      drift(spaceship, spaceship.heading, 100);
       repaintLoop();
     }
 
@@ -31,8 +30,14 @@
         case 37: // LEFT
           spaceship.turnLeft();
           break;
+        case 38: // UP
+          spaceship.speedUp();
+          break;
         case 39: // RIRGHT
           spaceship.turnRight();
+          break;
+        case 40: // LEFT
+          spaceship.slowDown();
           break;
         default:
         // nothing
