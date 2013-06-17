@@ -4,10 +4,14 @@ function Asteroid(){
   this.heading = Math.random() * 360;
   this.angle = 0;
   this.speed = Math.random() * 50;
+  this.gone = false;
   rotate(this, "angle", 10);
   drift(this, this.heading, this.speed);
 
   this.paint = function(context){
+    if (this.gone){
+      return;
+    }
     context.translate(this.x, this.y);
     context.rotate(this.angle * Math.PI / 180.0);
     var width = asteroidSprite.width;

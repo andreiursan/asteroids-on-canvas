@@ -23,7 +23,16 @@
       }
     }
 
-    function update(){
+    function removeDestroyed(arr) {
+      for (var i = arr.length - 1; i >= 0; i--){
+        var a = arr[i];
+        if (a.gone) {
+          arr.splice(i, 1);
+        }
+      }
+    }
+
+    function update() {
       try {
         var context = canvas.getContext('2d');
         context.fillStyle = "rgb(0,0,0)";
@@ -34,6 +43,9 @@
         repaintAll(context, asteroids);
         repaintAll(context, projectiles);
         repaintAll(context, explosions);
+        removeDestroyed(asteroids);
+        removeDestroyed(projectiles);
+        removeDestroyed(explosions);
       } catch(ex) {
         alert(ex);
       }
