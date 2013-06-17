@@ -14,5 +14,9 @@ function Asteroid(){
     var height = asteroidSprite.height;
     context.drawImage(asteroidSprite, -width/2, -height/2, width, height);
   }
+
+  this.isHitBy = function(x,y) {
+    return false;
+  }
 }
 
