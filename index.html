@@ -5,23 +5,37 @@
   <script src="js/lib/animatic.js"></script>
   <script src="js/spaceship.js"></script>
   <script src="js/asteroid.js"></script>
+  <script src="js/explosion.js"></script>
+  <script src="js/projectile.js"></script>
   <script>
     var canvas; 
     var spaceship; 
-    var asteroids = []; 
     var asteroidSprite;
+    var asteroids = []; 
+    var projectiles = []
+    var explosions = [];
+
+    function repaintAll(context, arr) {
+      for (var i = 0; i < arr.length; i++){
+        context.save();
+        arr[i].paint(context);
+        context.restore();
+      }
+    }
 
     function update(){
-      var context = canvas.getContext('2d');
-      context.fillStyle = "rgb(0,0,0)";
-      context.fillRect(0, 0, canvas.width, canvas.height);
-      context.save();
-      spaceship.paint(context);
-      context.restore();
-      for (var i = 0; i < asteroids.length; i++) {
+      try {
+        var context = canvas.getContext('2d');
+        context.fillStyle = "rgb(0,0,0)";
+        context.fillRect(0, 0, canvas.width, canvas.height);
         context.save();
-        asteroids[i].paint(context);
+        spaceship.paint(context);
         context.restore();
+        repaintAll(context, asteroids);
+        repaintAll(context, projectiles);
+        repaintAll(context, explosions);
+      } catch(ex) {
+        alert(ex);
       }
     }
 
@@ -53,6 +67,9 @@
           break;
         case 40: // DOWN
           spaceship.slowDown();
+          break;
+        case 32:
+          projectiles.push(new Projectile(spaceship.x, spaceship.y, spaceship.heading));
           break;
         default:
           // nothing
