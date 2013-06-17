@@ -16,7 +16,11 @@ function Asteroid(){
   }
 
   this.isHitBy = function(x,y) {
-    return false;
+    var xdist = Math.abs(x - this.x);
+    var ydist = Math.abs(y - this.y);
+    var width = asteroidSprite.width;
+    var height = asteroidSprite.height;
+    return ((xdist < width / 2) && (ydist < height /2)); 
   }
 }
 
