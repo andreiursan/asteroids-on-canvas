@@ -11,6 +11,7 @@
     var canvas; 
     var spaceship; 
     var asteroidSprite;
+    var spaceshipSprite;
     var asteroids = []; 
     var projectiles = []
     var explosions = [];
@@ -67,6 +68,7 @@
     function init(){
       canvas = document.getElementById("asteroids-game");
       asteroidSprite = document.getElementById("asteroid-sprite");
+      spaceshipSprite = document.getElementById("spaceship-sprite");
       spaceship = new Spaceship();
       for(var i = 0; i < 3; i++){
         asteroids[i] = new Asteroid();
@@ -102,6 +104,7 @@
   </script>
   <body>
     <img src="img/asteroid.png" id="asteroid-sprite" style="display: none"/>
+    <img src="img/spaceship.png" id="spaceship-sprite" style="display: none"/>
     <canvas id="asteroids-game" width="800" height="600">
       Sorry, your browser does not support the canvas element. 
       Upgrade to a modern browser
