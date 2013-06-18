@@ -46,9 +46,17 @@
         removeDestroyed(asteroids);
         removeDestroyed(projectiles);
         removeDestroyed(explosions);
+        if(asteroids.length === 0){
+          onGameOver();
+        }
       } catch(ex) {
         alert(ex);
       }
+    }
+
+    function onGameOver(){
+      var gameover = document.getElementById("gameover");
+      gameover.style.display = "inline";
     }
 
     function repaintLoop(){
@@ -60,7 +68,7 @@
       canvas = document.getElementById("asteroids-game");
       asteroidSprite = document.getElementById("asteroid-sprite");
       spaceship = new Spaceship();
-      for(var i = 0; i < 10; i++){
+      for(var i = 0; i < 3; i++){
         asteroids[i] = new Asteroid();
       }
       repaintLoop();
@@ -97,7 +105,11 @@
     <canvas id="asteroids-game" width="800" height="600">
       Sorry, your browser does not support the canvas element. 
       Upgrade to a modern browser
-    <canvas>
+    </canvas>
+    <div id="gameover" style="display: none; z-index: 10; position: absolute; top: 200px; left:325px;">
+      <h1 style="color:red">Game Over</h1>
+      <h3 style="color:red">refresh for more fun<h3>
+    </div>
   </body>
 </html>
 
