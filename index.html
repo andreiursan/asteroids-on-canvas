@@ -94,7 +94,7 @@
           projectiles.push(new Projectile(spaceship.x, spaceship.y, spaceship.heading));
           break;
         default:
-          // nothing
+          return true;
       }
       return false;
     }
