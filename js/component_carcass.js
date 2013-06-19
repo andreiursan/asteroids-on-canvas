@@ -6,6 +6,10 @@ function View(x, y){
   }
 }
 
+function Score(score){
+  this.score = score;
+}
+
 var ComponentCarcass = (function(){
   function Components() {
     // here we store the "behavior"
