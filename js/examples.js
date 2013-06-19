@@ -6,7 +6,7 @@ var proxyObj = Proxy.create({
 
   set: function(obj, propertyName, value) {
     var log = "Property " + propertyName +
-              "doesn't like value: " + value;
+              " doesn't like value: " + value;
     console.log(log);
     return true;
   }
@@ -15,12 +15,12 @@ var proxyObj = Proxy.create({
 function makeLogger(obj) {
   var proxy = Proxy.create({
     get: function(rcvr, name) {
-      log(‘get’, name, obj);
+      //log(‘get’, name, obj);
       return obj[name];
     },
 
     set: function(rcvr, name, val) {
-      log(‘set’, name, obj, val);
+      //log(‘set’, name, obj, val);
       obj[name] = val;
       return true;
     }

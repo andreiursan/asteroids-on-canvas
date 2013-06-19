@@ -9,11 +9,14 @@
 
 
     function init(){
-
+      var cc = ComponentCarcass();
+      cc.addComponent(new View(2, 2));
+      console.log("I have a x property of " + cc.x);
+      cc.x = 22;
+      console.log("Now x is " + cc.x);
     }
 
     window.onload = init;
-    window.onkeydown = keyDown;
   </script>
   <body>
     <h1>Open the console and Proxy!</h1>
